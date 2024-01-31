@@ -2,6 +2,7 @@ import requests
 from io import BytesIO
 import numpy as np
 import cv2
+from matplotlib import pyplot as plt
 
 # Get image given the url
 def getImage(url, mode = cv2.IMREAD_COLOR):
@@ -37,3 +38,18 @@ def sp_noise(image, prob):
     output[probs < (prob / 2)] = black
     output[probs > 1 - (prob / 2)] = white
     return output
+
+def show_collage(figsize, nrows, ncols, **kwargs):
+    plt.figure(figsize=figsize)
+    
+    if 'images' not in kwargs:
+        return False
+    
+    n = len(kwargs['images'])
+    for i in range(n):
+        plt.subplot(nrows, ncols, i+1)
+        plt.imshow(kwargs['images'][0], cmap = 'gray')
+        plt.title('Original Image')
+        plt.axis('off')
+    
+            
