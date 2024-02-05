@@ -43,13 +43,13 @@ def show_collage(figsize, nrows, ncols, **kwargs):
     plt.figure(figsize=figsize)
     
     if 'images' not in kwargs:
-        return False
+        return False    
     
     n = len(kwargs['images'])
     for i in range(n):
         plt.subplot(nrows, ncols, i+1)
-        plt.imshow(kwargs['images'][0], cmap = 'gray')
-        plt.title('Original Image')
+        plt.imshow(kwargs['images'][i], cmap = 'gray')
+        plt.title(kwargs['titles'][i])
         plt.axis('off')
     
             
